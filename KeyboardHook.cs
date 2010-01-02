@@ -751,6 +751,7 @@ namespace gma.System.Windows
         /// Simulate the Key Press Event
         /// </summary>
         /// <param name="keyCode">The code of the Key to be simulated</param>
+        /// <param name="e">The key event arguments</param>
         private void PressKeyboardButton(Keys keyCode, KeyPressEventArgs e)
         {
             //const int KEYEVENTF_EXTENDEDKEY = 0x1;
@@ -793,6 +794,7 @@ namespace gma.System.Windows
             return -1;
         }
 
+        private bool calledArtificially;
         /// <summary>
         /// A callback function which will be called every time a keyboard activity detected.
         /// </summary>
@@ -818,7 +820,6 @@ namespace gma.System.Windows
         /// procedure does not call CallNextHookEx, the return value should be zero. 
         /// </returns>
         /// 
-        private bool calledArtificially;
         private int KeyboardHookProc(int nCode, Int32 wParam, IntPtr lParam)
         {
             //indicates if any of underlaing events set e.Handled flag
